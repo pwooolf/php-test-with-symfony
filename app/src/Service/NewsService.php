@@ -30,7 +30,6 @@ class NewsService
         $allNewsGuid = $entityManager->getRepository(News::class)->getAllGuids($source);
 
         $provider = $this->getProvider($source);
-        $provider->getRowNews();
         $news = $provider->getNews($allNewsGuid);
 
         foreach ($news as $item) {

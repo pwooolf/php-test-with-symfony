@@ -12,7 +12,7 @@ class RbcProvider implements ProviderInterface
     private const LIMIT = 15;
     private SimpleXMLElement $data;
 
-    public function getRowNews(): void
+    private function getRowNews(): void
     {
         $result = file_get_contents(self::URL, false,
             stream_context_create([
@@ -25,6 +25,8 @@ class RbcProvider implements ProviderInterface
 
     public function getNews(array $allNewsGuid): array
     {
+        $this->getRowNews();
+
         $news = [];
         for ($i = 0; $i < self::LIMIT; $i++) {
             $item = CreateNewsFactory::create($this->data->channel->item[$i], $allNewsGuid, self::PROVIDER);
