@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1>{{ news.title }}</h1>
+        <a href="{{ path('news_list')}}">Назад</a>
+        <br>
+        {% if news.image is not null %}
+            <img style="max-width: 500px" src="{{news.image}}" alt="" />
+        {% endif %}
+        <p>
+            {{ news.text }}
+        </p>
+
+    </div>
+
+{% endblock %}

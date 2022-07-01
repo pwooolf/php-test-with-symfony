@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Список новостей{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h1>Список новостей</h1>
+
+        {% if newsList is empty %}
+            <p>Новостей нет...</p>
+        {% endif %}
+
+        {% for news in newsList %}
+
+            <div class="news" style="margin-bottom: 20px; padding: 10px; border-bottom: dashed">
+
+                <h3>{{ news.title }}</h3>
+
+                <p>{{ truncate(news.text) }}</p>
+
+                <a href="/news/{{ news.id }}" class="btn btn-primary">Подробнее</a>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+{% endblock %}
